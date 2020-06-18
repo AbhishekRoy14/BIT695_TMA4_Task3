@@ -1,0 +1,115 @@
+
+<?php
+	include_once 'connectDatabase.php';
+	
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<!--Adding Responsive code-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!--Adding CSS file to the webpage-->
+		<link rel="stylesheet" href="css/style.css">
+		<!--calls to set_form_date.js  -->
+		<script type="text/javascript" src="js/set_form_date.js"></script>
+		<!--calls to validate.js  -->
+		<script type="text/javascript" src="js/validate.js"></script>
+		<!--Adding jquery-->
+		<script>
+			function query()
+			{
+			document.forms['table1'].action = 'gamesDetails.php';   
+			document.forms['table1'].submit();
+			}
+			
+			function showHideID()
+			{
+			if(document.getElementById('showID').checked)
+			{
+			document.getElementById('BoardgameID').disabled=false;
+			}
+			else{
+			document.getElementById('BoardgameID').disabled=true;
+			}
+			}
+		</script>
+		
+		
+	</head>
+	
+	<body>
+		<header>
+			<h1>Board games aficionados</h1>
+			<nav id="follow_me">
+				<ul>
+					<li><a href="../index.html">Home</a></li>
+					<li><a href="boardgames.htm">Games</a></li>
+					<li><a href="../Board_Games_Assigned/gamesAssigned.htm">Assign Games</a></li>
+					<li><a href="../Schedule/schedule.htm">Games Schedule</a></li>
+					<li><a href="../Scores/memberScore.htm">Players Score</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+		<section class="content_pages">
+		<img style="padding-top: 50px" id="left_semcircle" src="images/half_circle_left.gif" alt="">
+		<img style="padding-top: 50px" id="right_semcircle" src="images/half_circle_right.gif" alt="">
+		<h2 style="padding-top: 70px">Create or Retrieve Boardgames Details</h2>
+
+		<div class="container">
+		<!--Adding Form-->
+		<form id="form" name="table1" onsubmit="return validate()" action="addBoardGames.php"  method="POST">
+		<fieldset>   
+		<div  class="form">
+		<form id="contactform"> 
+    	
+		<p class="contact"><label for="name">Click Checkbox for Retreving - Board Games Details <span><input type="checkbox" id="showID" name="showID" value="yes" onclick="showHideID()" ></span></label></p> 
+		<input id="BoardgameID" name="BoardgameID" placeholder="BoardgameID" 
+		title="Only Numbers!"  type="text" disabled="disabled" tabindex="1" /> 
+		
+		<p class="contact"><label for="boardgame">Board Games</label></p> 
+		<input id="boardgame" name="boardgame" placeholder="Name of the Game" type="text" required pattern="[A-Za-z\s]+"
+		title="Please enter letters only!" tabindex="2"/> 
+		
+		<p class="contact"><label for="position">Position</label></p> 
+		<input id="position" name="position" placeholder="Position" required  pattern="[A-Za-z\s]+" 
+		title="Please enter letters only!" type="text" tabindex="3"/> 
+		
+		<p class="contact"><label for="notes">Notes</label></p> 
+		<input id="notes" name="notes" placeholder="Membership Information" type="text" required pattern="[A-Za-z\s]+"
+		title="Please enter letters only!" tabindex="4"/> 			
+		
+		<input class="buttom" name="submit_games"  value="Submit" type="submit" tabindex="5"/>
+		<input class="buttom" type="button" name="retrieve_details"  value="retrieve"  onclick="query();" tabindex="6" />
+		
+		</form>
+		</div>      
+		</fieldset>
+		</form> 
+		</div>
+        </section>
+		</main>
+		<!--Adding footer-->
+		<footer>
+        <p>Board games aficionados</p><p>1970-2020</p>
+		</footer>
+		</body>		
+		</html>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+				
