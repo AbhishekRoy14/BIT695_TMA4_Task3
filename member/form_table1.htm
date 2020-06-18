@@ -1,0 +1,104 @@
+
+<?php
+	include_once 'connectDatabase.php';
+	
+?>
+
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+		<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<!--Adding Responsive code-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!--Adding CSS file to the webpage-->
+		<link rel="stylesheet" href="css/style.css">
+		<!--calls to set_form_date.js  -->
+		<script type="text/javascript" src="js/set_form_date.js"></script>
+		<!--calls to validate.js  -->
+		<script type="text/javascript" src="js/validate.js"></script>
+		<!--Adding jquery-->
+			<script>
+				function query()
+				{
+				document.forms['table1'].action = 'dataQuery.php';   
+				document.forms['table1'].submit();
+				}
+				
+				function dropdowlist()
+				{
+				document.forms['table1'].action = 'memberIDList.php';   
+				
+				}
+				function showHideMemberID()
+				{
+				if(document.getElementById('showID').checked)
+				{
+				document.getElementById('memberID').disabled=false;
+				}
+				else{
+				document.getElementById('memberID').disabled=true;
+				}
+				}
+				
+			</script>		
+		</head>
+		
+		<body>
+			<header>
+				<h1>Board games aficionados</h1>
+				<nav id="follow_me">
+					<ul>
+						<li><a href="../index.html">Home</a></li>
+						<li><a href="form_table1.htm">Members</a></li>
+						<li><a href="../Board_Games/boardgames.htm">Games</a></li>
+						<li><a href="../about.html">About Us</a></li>
+					</ul>
+					</nav>
+					</header>
+					<main>
+					<section class="content_pages">
+					<img style="padding-top: 50px" id="left_semcircle" src="images/half_circle_left.gif" alt="">
+					<img style="padding-top: 50px" id="right_semcircle" src="images/half_circle_right.gif" alt="">
+					<h2 style="padding-top: 70px">Create or Retrieve Members Details</h2>
+					<div class="container">
+					<!--Adding Form-->
+					<form id="form" name="table1" onsubmit="return validate()" action="addData.php"  method="POST">
+					<fieldset>
+					
+					<div  class="form">
+					<form id="contactform"> 
+					<p class="contact"><label for="name">Click Checkbox for Retreving - MemberID <span><input type="checkbox" id="showID" name="showID" value="yes" onclick="showHideMemberID()" ></span></label></p> 
+					<input id="memberID" name="memberID" placeholder="MemberID" title="Only Numbers!"  type="text" disabled="disabled" tabindex="1" /> 
+										
+					<p class="contact"><label for="name">First Name</label></p> 
+					<input id="firstname" name="firstname" placeholder="First Name" type="text" required pattern="[A-Za-z\s]+" title="Please enter letters only!" tabindex="2"/> 
+					
+					<p class="contact"><label for="name">Family Name</label></p> 
+					<input id="familyname" name="familyname" placeholder="Family Name" required  pattern="[A-Za-z\s]+" title="Please enter letters only!" type="text" tabindex="3"/> 
+					
+					<p class="contact"><label for="email">Email</label></p> 
+					<input id="email" name="email" placeholder="example@domain.com" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+					title="A valid email address is required!" type="email" tabindex="4"/> 
+					
+					<p class="contact"><label for="phone">Phone</label></p> 
+					<input id="phone" name="phone" placeholder="NZ Phone Number" required pattern="^(0|(\+64(\s|-)?)){1}(\d{1}|(21|22|27){1})(\s|-)?\d{3}(\s|-)?\d{4}$"
+					title="A valid NZ phone or mobile number is required!"  type="text" tabindex="5"/> 
+					
+					<input class="buttom" name="submit_details" value="Submit" type="submit" tabindex="6"/>
+					
+					<input class="buttom" type="button" name="retrieve_details"  value="retrieve"  onclick="query();" tabindex="7" />
+					</form>
+					</div>      
+					</fieldset>									
+					</form> 										
+					</div>
+					</section>
+					</main>
+					<!--Adding footer-->
+					<footer>
+					<p>Board games aficionados</p><p>1970-2020</p>
+					</footer>
+					</body>					
+					</html>
+										
